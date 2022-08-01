@@ -351,6 +351,7 @@ resource "aws_security_group" "bastion" {
   }
 }
 
+Creating webserver security group for both ELB and webserver instances.(As a best practice you can create different security group for ELB and Instances )
 resource "aws_security_group" "webserver" {
   name_prefix = "webserver-"
   description = "SG for ELB and webserver"
