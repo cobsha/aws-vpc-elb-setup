@@ -508,7 +508,10 @@ We can access our domain using datasource and add a record
 }
 ```
 Inorder to validate and apply all these code, we need to enter following command.
-
+```bash
+terraform validate
+terraform apply
+```
 ![Screenshot from 2022-08-01 21-43-11](https://user-images.githubusercontent.com/71638921/182194686-80fa7aad-18c9-4db3-8157-630e254c0c12.png)
 ![Screenshot from 2022-08-01 21-59-07](https://user-images.githubusercontent.com/71638921/182198180-c69a36b8-3b77-433d-9995-cb09c0fe896c.png)
 
