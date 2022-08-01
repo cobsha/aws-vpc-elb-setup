@@ -8,7 +8,8 @@ I wrote a terraform code to create an entire VPC  as a module, this can be inclu
 the website can be accessed from anywhere in internet via ELB. There is a reason why we deploy application and Database servers in a private subnet,
 it will increase the security of the server by not exposing it to the public. Inorder to access this webserver we need an another instance deployed in a public subnet called bastion host.
 
-google-drive://shafisnpni@gmail.com/0AMMU7M5zSKFqUk9PVA/1VggwgYvM2wahCGcGwz7M1svcvDYIxcHH
+![VPC-ELB](https://user-images.githubusercontent.com/71638921/182177823-08fae2b0-3cbb-4511-a537-7738ebdfa435.jpg)
+
 
 ## Prerequsites
 
