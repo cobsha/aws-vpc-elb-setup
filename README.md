@@ -24,6 +24,8 @@ We are starting this from VPC module Setup, then ELB setup and Instances.
 Entire VPC including Internetgateway, Natgateway and associated Elastic Ip, Routetable creation and Association set it up in a seperate module in a seperate directory and it's completely isolated from the main code, so that we can use this in any infra setup. so, we create 2 directories named module and project_dir (name doesn't matter). 
 In module setup we don't do hardcording data instead we use variables to represent data. We have main.tf, variables.tf and output.tf in module directory(It doesn't matter what file name is, the extension should be .tf and we can combine everything in a single file if we want)
 
+![Screenshot from 2022-08-01 12-32-21](https://user-images.githubusercontent.com/71638921/182099972-52fc6b95-e28b-45c6-8eae-797d7df8f1fc.png)
+
 
 ### VPC Creation
 variables declaration in module
