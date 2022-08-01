@@ -212,10 +212,24 @@ resource "aws_route_table_association" "private" {
 
 ### Project Directory Setup
 
+![Screenshot from 2022-08-01 13-24-31](https://user-images.githubusercontent.com/71638921/182100585-61cdc11b-58e6-4ce8-9f59-3dcb9bef76b6.png)
+
+We need to create 5 terraform files named provider.tf, main.tf, variables.tf, output.tf and datasource.tf, we communicate with aws using the credential in the file named provider.tf (If you are using ec2 istance to manage terraform it is best practice to use role instead of security key pair), 
+
 ```bash
  #provider.tf
-```
+ provider "aws" {
 
+  region = var.region
+  access_key = "Enter Your Access key"
+  secret_key = "Enter your secret key"   
+}
+```
+We need to initialize provider after configuring it in the file provider.tf. use below commands to initialize.
+![Screenshot from 2022-08-01 13-36-23](https://user-images.githubusercontent.com/71638921/182102656-8bede63a-1557-44da-b4b3-74e6ff23d44f.png)
+
+
+Variables declaration
 ```bash
 #variables.tf
 variable "region" {
@@ -289,7 +303,7 @@ Calling module for creating VPC
 ```bash
 #main.tf
 module "vpc" {
-    source = "../module"
+    source = "../module" #you need to specify your module path
     vpc_cidr = var.cidr
     project = var.project
     env = var.env
@@ -422,14 +436,12 @@ resource "aws_instance" "webserver" {
 }
 ```
 
-```bash
-  npm run deploy
-```
 
 
 
 ### Elastic Load Balancer Creation
 
+Inorder to acces our webserver we need a loadbalancer
 ```bash
 resource "aws_elb" "elb" {
   name_prefix = "elb-"
@@ -449,7 +461,7 @@ resource "aws_elb" "elb" {
     instance_protocol  = "http"
     lb_port            = 443
     lb_protocol        = "https"
-    ssl_certificate_id = data.aws_acm_certificate.ssl.arn
+    ssl_certificate_id = data.aws_acm_certificate.ssl.arn #I have already created a tls certificate from ACM service in AWS, and we can access those certificate via datasource
   }
 
   health_check {
@@ -479,6 +491,7 @@ resource "aws_elb" "elb" {
 ```
 ### Adding Record to the Route53
 
+We can access our domain using datasource and add a record
 ```bash
   zone_id = data.aws_route53_zone.r53.zone_id
   name    = "zomato.${data.aws_route53_zone.r53.name}"
