@@ -138,6 +138,8 @@ Public Subnet
 
 ### Elastic IP and Natgateway
 
+Natgateway provides internet access to the instances in the private subnets
+
 ```bash
   resource "aws_eip" "eip" {
   vpc      = true
@@ -199,7 +201,7 @@ resource "aws_route_table" "private" {
 ```bash
   resource "aws_route_table_association" "public" {
 
-  count = 3
+  count = 3 
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
@@ -463,7 +465,7 @@ resource "aws_elb" "elb" {
     instance_protocol  = "http"
     lb_port            = 443
     lb_protocol        = "https"
-    ssl_certificate_id = data.aws_acm_certificate.ssl.arn #I have already created a tls certificate from ACM service in AWS, and we can access those certificate via datasource
+    ssl_certificate_id = data.aws_acm_certificate.ssl.arn ##I have already created a tls certificate from ACM service in AWS, and we can access those certificate via datasource
   }
 
   health_check {
@@ -505,3 +507,8 @@ We can access our domain using datasource and add a record
   }
 }
 ```
+Inorder to validate and apply all these code, we need to enter following command.
+
+![Screenshot from 2022-08-01 21-43-11](https://user-images.githubusercontent.com/71638921/182194686-80fa7aad-18c9-4db3-8157-630e254c0c12.png)
+![Screenshot from 2022-08-01 21-59-07](https://user-images.githubusercontent.com/71638921/182198180-c69a36b8-3b77-433d-9995-cb09c0fe896c.png)
+
