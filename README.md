@@ -6,7 +6,7 @@ We can automate major cloud platforms like AWS, Azure or GCP using terraform.
 
 I wrote a terraform code to create an entire VPC  as a module, this can be included in any infra creation for setting up VPC, all you need to just call it with proper variables. along with VPC i have also setup elastic load balancer with 2 instances, These instances placed in a private subnet and a static website deployed in it,
 the website can be accessed from anywhere in internet via ELB. There is a reason why we deploy application and Database servers in a private subnet,
-it will increase the security of the server by not exposing it to the public. Inorder to access this webserver we need an another instance deployed in a public subnet called bastion host.
+it will increase the security of the server by not exposing it directly to the public. Inorder to access this webserver we need an another instance deployed in a public subnet called bastion host.
 
 ![VPC-ELB](https://user-images.githubusercontent.com/71638921/182177823-08fae2b0-3cbb-4511-a537-7738ebdfa435.jpg)
 
