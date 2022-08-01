@@ -398,7 +398,10 @@ resource "aws_security_group" "webserver" {
 }
 
 ```
-Key pair creation for accessing the instances
+Key pair creation for accessing the instances. keypairs are used to access the instances, we need to create a keypair on our machine and upload into the code.
+
+![Screenshot from 2022-08-01 14-01-46](https://user-images.githubusercontent.com/71638921/182206944-574b5537-872f-4096-909d-5a96e40f9be0.png)
+
 
 ```bash
  resource "aws_key_pair" "key" {
